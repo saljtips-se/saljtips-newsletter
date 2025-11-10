@@ -1,0 +1,20 @@
+name: ✏️ Generate weekly AI drafts
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Kör varje måndag kl. 07:00 svensk tid (UTC+1)
+  workflow_dispatch: # Gör att du kan köra manuellt via Actions
+
+jobs:
+  call-generate-drafts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ✨ Call Supabase Edge Function (generate-drafts)
+        run: |
+          echo "Kör generate-drafts..."
+          curl -X POST "$SUPABASE_FUNCTION_URL" \
+            -H "Authorization: Bearer $SUPABASE_SERVICE_KEY" \
+            -H "Content-Type: application/json"
+    env:
+      SUPABASE_FUNCTION_URL: https://lvjptongatymawnqymvc.supabase.co/functions/v1/generate-drafts
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
