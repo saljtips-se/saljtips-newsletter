@@ -16,5 +16,5 @@ jobs:
             -H "Authorization: Bearer $SUPABASE_SERVICE_KEY" \
             -H "Content-Type: application/json"
     env:
-      SUPABASE_FUNCTION_URL: https://lvjptongatymawnqymvc.supabase.co/functions/v1/generate-drafts
+      SUPABASE_FUNCTION_URL: https://lvjptongatymawnqymvc.supabase.co/functions/v1/bright-action
       SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
